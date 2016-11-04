@@ -20,7 +20,7 @@ class App extends Component {
     const messages = this.state.messages.concat(newMsg)
     this.socket.send(JSON.stringify(newMsg));
   };
-  //takes the message and detrimes what to do with it wdepending on the type
+  //takes the message and detrimes what to do with it depending on the type
   renderMsg(ev){
     const newMsg = JSON.parse(ev.data)
     console.log("newMsg",newMsg.type);

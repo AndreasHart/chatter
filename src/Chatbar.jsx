@@ -9,7 +9,7 @@ class Chatbar extends Component {
     super(props);
     this.updateNewMessage = this.updateNewMessage.bind(this);
     this.updateNewName = this.updateNewName.bind(this);
-    //this._handleKeyPress = this._handleKeyPress.bind(this);
+
   }
   _handleKeyPress(e) {
     if (e.key === 'Enter') {
@@ -34,6 +34,8 @@ class Chatbar extends Component {
         }
         this.props.onEnter(MSG)
       }
+      this.setState({NewMessage:""});
+
     }
   }
 
@@ -48,7 +50,7 @@ class Chatbar extends Component {
   render() {
     return (
       <footer>
-      <input id="username" type="text" value={this.state.name} onChange={this.updateNewName} placeholder={this.props.username}/>
+      <input id="username" type="text" onKeyPress={this._handleKeyPress.bind(this)} value={this.state.name} onChange={this.updateNewName} placeholder={this.props.username}/>
       <input id="new-message" onKeyPress={this._handleKeyPress.bind(this)} type="text" value={this.state.NewMessage} onChange={this.updateNewMessage} placeholder="Type a message and hit ENTER" />
       </footer>
       );
